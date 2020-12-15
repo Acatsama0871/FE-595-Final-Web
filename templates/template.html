@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>parent template</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+
+
+<div class="body">
+    <body>
+        <!-- Navigation -->
+        <div class="navigation_container">
+            <nav><!--Navigation-->
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('day_select') }}">Backtest</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- content -->
+        {% block content %}
+        {% endblock %}
+
+        <!-- background effect -->
+        <div id="particles-js"></div>
+        <script type="text/javascript" src="{{ url_for('static', filename='javascript/particles.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+    </body>
+</div>
+</html>
