@@ -83,3 +83,72 @@ nav a:hover{
     font-family:Bookman;
     font-size: 20px;
 }
+
+/*report page style*/
+.report_title{
+    padding-top: 15%;
+    text-align:center;
+    font-family:Palatino;
+    font-size:35px;
+}
+
+.report_content{
+    padding-bottom: 5%;
+    text-align:center;
+    font-family:Bookman;
+    font-size: 20px;
+
+    display: grid;
+    grid-template-columns: 49.5% 49.5%;
+}
+
+.report_content table{
+    /*style*/
+    border-collapse:collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.report_content textarea{
+    width: 400px;
+    height: 410px;
+}
+
+.report_content.plot_1{
+    position:static;
+}
+
+.report_content.plot_2{
+}
+
+.report_content a{
+    position:relative;
+    right:30px;
+}
+
+.report_content table thead tr{
+    background-color: #009879;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.report_content table th,
+.report_content table td{
+    padding: 12px 15px;
+}
+
+.report_content table tbody tr{
+    border: 1px solid #dddddd;
+}
+
+.report_content table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.report_content table tbody tr:last-of-type{
+    border-bottom: 2px solid #009879;
+}

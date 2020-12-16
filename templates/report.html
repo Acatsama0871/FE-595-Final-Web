@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+</head>
+
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="report_title">
+        <h2>Writing Assistant</h2>
+    </div>
+
+    <div class="report_content">
+            <div class="table">
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+            </div>
+
+            <div class="text_area">
+                <label>
+                    <textarea name="text_output">{{ text }}</textarea>
+                </label>
+            </div>
+
+        <div class="plot_1">
+            <img src="/static/images/someplot.png" alt="plot">
+        </div>
+
+        <div class="plot_2">
+            <img src="/static/images/someplot.png" alt="plot">
+        </div>
+
+        <br>
+    </div>
+    <br>
+        <div class="report_link">
+        <a href="{{ url_for('backtest') }}">Try another time period</a>
+        </div>
+    {% endblock %}
+</body>
+</html>
