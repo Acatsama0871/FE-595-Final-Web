@@ -21,7 +21,7 @@ nav a{
 }
 
 nav a:hover{
-    color:#D3D3D3;
+    color:#E38B9E;
 }
 
 
@@ -39,17 +39,8 @@ main{
 }
 
 /* background */
-#particles-js canvas {
+#vanta-clouds {
     display: block;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
-    transition: opacity .8s ease, transform 1.4s ease
-}
-
-#particles-js {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -57,7 +48,6 @@ main{
     top: 0;
     left: 0
 }
-
 
 /* home page style */
 .home_title{
@@ -119,6 +109,11 @@ main{
 }
 
 .report_content textarea{
+    font-size: 16px;
+    font-weight:bold;
+    border: none;
+    color: #000000;
+    background-color: transparent;
     width: 400px;
     height: 380px;
     margin-top: 25px;
@@ -136,8 +131,9 @@ main{
 }
 
 .report_content table thead tr{
-    background-color: #009879;
-    color: #ffffff;
+    /*background-color: #009879;*/
+    background-color: #E38B9E;
+    color: #000000;
     font-weight: bold;
 }
 
@@ -155,7 +151,7 @@ main{
 }
 
 .report_content table tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #E38B9E;
 }
 
 .report_link{
@@ -170,7 +166,7 @@ main{
 }
 
 .report_link a:hover{
-    color:#D3D3D3;
+    color:#E38B9E;
 }
 
 .table{

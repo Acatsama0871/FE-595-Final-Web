@@ -40,14 +40,14 @@ def strategy_profitability_performance(features, y_pred, principal=1, bool_retur
     plt.plot(dates, res['BenchmarkCumulativePnl'].values, label='Always holding SP500')
     plt.xticks(rotation=30)
     plt.title('The Strategy VS Benchmark P&L')
-    plt.legend()
+    plt.legend(fancybox=True, framealpha=0.5)
 
     # convert to html
     buffer = BytesIO()
-    plt.savefig(buffer, bbox_inches="tight")
+    plt.savefig(buffer, bbox_inches="tight", transparent=True)
     plt.close()
     plot_data = buffer.getvalue()
-    imb = base64.b64encode(plot_data)  # 对plot_data进行编码
+    imb = base64.b64encode(plot_data)
     ims = imb.decode()
     imd = "data:image/png;base64," + ims
 
@@ -142,7 +142,7 @@ def plot_confusion_matrix(features, the_pred):
     plt.ylabel("Predicted")
     plt.title("ML Model Confusion Matrix")
     buffer = BytesIO()
-    fig.savefig(buffer, bbox_inches="tight")
+    fig.savefig(buffer, bbox_inches="tight", transparent=True)
     plt.close()
     plot_data = buffer.getvalue()
     imb = base64.b64encode(plot_data)
