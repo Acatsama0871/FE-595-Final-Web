@@ -27,9 +27,27 @@
         {% endblock %}
 
         <!-- background effect -->
-        <div id="particles-js"></div>
-        <script type="text/javascript" src="{{ url_for('static', filename='javascript/particles.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+        <div id="vanta-clouds">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+
+        <script>
+            VANTA.GLOBE({
+              el: "#vanta-clouds",
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              scale: 1.00,
+              scaleMobile: 1.00,
+              color: 0xe14e78,
+              color2: 0xbb2c90,
+              size: 1.20,
+              backgroundColor: 0xd7d2dc
+            })
+        </script>
+    </div>
     </body>
 </div>
 </html>

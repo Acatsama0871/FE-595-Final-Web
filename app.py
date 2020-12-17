@@ -66,6 +66,7 @@ def report():
 
             # trading actions
             actions = trading_action(cur_feature, cur_pred)
+            actions.insert(0, "Trading Actions:")
             actions = '\n'.join(actions)
 
             # confusion matrix
