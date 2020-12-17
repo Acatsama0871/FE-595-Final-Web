@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ error_type }}</title>
+</head>
+
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="home_title">
+        <h2>{{ error_type }}</h2>
+    </div>
+
+    <div class="home_desc">
+        <p>{{ error_message }}</p>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -14,24 +14,29 @@
     </div>
 
     <div class="day_select">
-        <label for="begin_date">Please choose a begin date from the list:</label>
-        <select name="begin_date" id="begin_date">
-            {% for cur_date in dates %}
-                <option value="{{ cur_date }}">{{ cur_date }}</option>
-            {% endfor %}
-        </select>
+        <p>
+            Please set the time interval greater than 4 weeks in order to get a proper plot and performance report.
+        </p>
+        <form action="{{ action_content }}" method="post">
+            <label for="begin_date">Please choose a begin date from the list:</label>
+            <select name="begin_date" id="begin_date">
+                {% for cur_date in dates %}
+                    <option value="{{ cur_date }}">{{ cur_date }}</option>
+                {% endfor %}
+            </select>
 
-        <br>
+            <br>
 
-        <label for="begin_date">Please choose an end date from the list:</label>
-        <select name="end_date" id="end_date">
-            {% for cur_date in dates %}
-                <option value="{{ cur_date }}">{{ cur_date }}</option>
-            {% endfor %}
-        </select>
+            <label for="begin_date">Please choose an end date from the list:</label>
+            <select name="end_date" id="end_date">
+                {% for cur_date in dates %}
+                    <option value="{{ cur_date }}">{{ cur_date }}</option>
+                {% endfor %}
+            </select>
 
-        <br>
-        <input type="submit" value="submit">
+            <br>
+            <input type="submit" value="submit">
+        </form>
 
 
     </div>
