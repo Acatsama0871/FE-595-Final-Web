@@ -9,6 +9,7 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
+        <main>
     <div class="report_title">
         <h2>Writing Assistant</h2>
     </div>
@@ -27,11 +28,11 @@
             </div>
 
         <div class="plot_1">
-            <img src="/static/images/someplot.png" alt="plot">
+            <img src="{{ img1 }}" alt="plot">
         </div>
 
         <div class="plot_2">
-            <img src="/static/images/someplot.png" alt="plot">
+            <img src="{{ img2 }}" alt="plot">
         </div>
 
         <br>
@@ -41,5 +42,6 @@
         <a href="{{ url_for('backtest') }}">Try another time period</a>
         </div>
     {% endblock %}
+    </main>
 </body>
 </html>

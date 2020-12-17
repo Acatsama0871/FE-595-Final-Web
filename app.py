@@ -3,9 +3,14 @@
 
 
 # modules
+import io
+import random
 from datetime import datetime
-from flask import Flask, render_template, request, abort, Markup
 from functions.utility import *
+from functions.backtest import *
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from flask import Flask, render_template, request, abort, Markup, Response
 
 app = Flask(__name__)
 
@@ -35,6 +40,7 @@ def backtest():
 def report():
     if request.method == 'GET':  # block direct access
         abort(403)
+
     elif request.method == 'POST':
         # retrieve dates
         begin_date = request.form['begin_date']
@@ -46,16 +52,31 @@ def report():
         
         # check dates
         if time_delta.days >= 4 * 7:
-            # add table
-            table1 = create_dataframe()
+            # load data
+            cur_market, cur_feature = get_data(begin_date, end_date)
 
-            # add plot
-            create_plot2(10)
+            # fake y_pred
+            cur_pred = np.array(random.choices([0, 1], k=cur_feature.shape[0]))
+
+            # PNL
+            image1, pnl_table = strategy_profitability_performance(cur_feature, cur_pred, bool_return=True)
+
+            # strategy stats
+            stats_table = strategy_stats_performance(pnl_table)
+
+            # trading actions
+            actions = trading_action(cur_feature, cur_pred)
+            actions = '\n'.join(actions)
+
+            # confusion matrix
+            image2 = plot_confusion_matrix(cur_feature, cur_pred)
 
             return render_template('report.html',
-                                   tables=[table1.to_html(classes="table", header=True, justify="center")],
-                                   titles=table1.columns.values,
-                                   text="text\n" * 1000
+                                   tables=[stats_table.to_html(classes="table", header=True, justify="center")],
+                                   titles=stats_table.columns.values,
+                                   text=actions,
+                                   img1=image1,
+                                   img2=image2
                                    )
         else:
             abort(406)

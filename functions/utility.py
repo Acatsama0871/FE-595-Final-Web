@@ -20,7 +20,7 @@ def generate_date(begin_date, end_date):
 def get_data(begin_date, end_date):
     # set database path
     pystore.set_path(os.path.join(os.getcwd(), "database"))
-    print(os.path.join(os.getcwd(), "database"))
+    print(os.path.join(os.getcwd(), "database")) # TODO delete
 
     # load data
     features_data = pystore.store("market_data").collection("feature").item("features").to_pandas()

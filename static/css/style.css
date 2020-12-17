@@ -32,6 +32,11 @@ nav a:hover{
     height:100vh;
 }
 
+main{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 /* background */
 #particles-js canvas {
@@ -115,15 +120,15 @@ nav a:hover{
 
 .report_content textarea{
     width: 400px;
-    height: 410px;
+    height: 380px;
+    margin-top: 25px;
 }
 
 .report_content.plot_1{
     position:static;
 }
 
-.report_content.plot_2{
-}
+
 
 .report_content a{
     position:relative;
@@ -151,4 +156,23 @@ nav a:hover{
 
 .report_content table tbody tr:last-of-type{
     border-bottom: 2px solid #009879;
+}
+
+.report_link{
+    text-align: center;
+}
+
+.report_link a{
+    padding-bottom: 200px;
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.report_link a:hover{
+    color:#D3D3D3;
+}
+
+.table{
+    padding-left: 50px;
 }
