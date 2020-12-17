@@ -3,16 +3,18 @@
 
 
 # modules
-import io
-import random
+import pickle
 from datetime import datetime
+from sklearn.preprocessing import StandardScaler
+from flask import Flask, render_template, request, abort, Markup
 from functions.utility import *
 from functions.backtest import *
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from flask import Flask, render_template, request, abort, Markup, Response
 
 app = Flask(__name__)
+
+# load model
+with open(os.path.join(os.getcwd(), "model/xgboost.pickle"), "rb") as f:
+    xgboost_model = pickle.load(f)
 
 
 # static pages
@@ -55,8 +57,19 @@ def report():
             # load data
             cur_market, cur_feature = get_data(begin_date, end_date)
 
-            # fake y_pred
-            cur_pred = np.array(random.choices([0, 1], k=cur_feature.shape[0]))
+            # generate y pred
+            cur_feature_normalize = cur_feature.copy()
+            del cur_feature_normalize["Date"]
+            del cur_feature_normalize["direction"]
+            cur_feature_normalize_columns = cur_feature_normalize.columns
+            cur_feature_normalize = cur_feature_normalize.values
+            condiction_macd = cur_feature_normalize_columns == "macd"
+            macd = cur_feature_normalize[:, condiction_macd]
+            cur_feature_normalize = cur_feature_normalize[:, [not i for i in condiction_macd]]
+            scaler = StandardScaler()
+            cur_feature_normalize = scaler.fit_transform(cur_feature_normalize)
+            cur_feature_normalize = np.hstack((cur_feature_normalize, macd))
+            cur_pred = xgboost_model.predict(cur_feature_normalize)
 
             # PNL
             image1, pnl_table = strategy_profitability_performance(cur_feature, cur_pred, bool_return=True)

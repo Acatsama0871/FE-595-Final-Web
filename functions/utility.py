@@ -4,9 +4,7 @@
 # module
 import os
 import pystore
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
 # generate date series for day select
