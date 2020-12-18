@@ -51,7 +51,7 @@ def report():
         begin_date_time = datetime.strptime(begin_date, FMT)
         end_date_time = datetime.strptime(end_date, FMT)
         time_delta = end_date_time - begin_date_time
-        
+
         # check dates
         if time_delta.days >= 4 * 7:
             # load data
@@ -127,4 +127,4 @@ def not_acceptable(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
