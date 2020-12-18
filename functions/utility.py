@@ -16,12 +16,12 @@ def generate_date(begin_date, end_date):
 
 # get data by dates
 def get_data(begin_date, end_date):
-    # set database path
-    pystore.set_path(os.path.join(os.getcwd(), "database"))
+    # set data path
+    data_path = os.path.join(os.getcwd(), "data")
 
     # load data
-    features_data = pystore.store("market_data").collection("feature").item("features").to_pandas()
-    market_data = pystore.store("market_data").collection("download").item("downloads").to_pandas()
+    features_data = pd.read_csv(os.path.join(data_path, "features.csv"))
+    market_data = pd.read_csv(os.path.join(data_path, "downloads.csv"))
 
     # subset the data
     features_data = features_data[features_data["Date"] >= begin_date]
