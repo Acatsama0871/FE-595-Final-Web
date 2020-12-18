@@ -6,4 +6,4 @@ numpy
 matplotlib
 seaborn
 scipy
-"dask[complete]"
+dask[complete]
