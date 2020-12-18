@@ -14,16 +14,16 @@ from scipy.stats import skew, kurtosis, norm
 
 # PNL plot function
 def strategy_profitability_performance(features, y_pred, principal=1, bool_return=False):
-    # 1+r return 
+    # 1+r return
     log_return = features['SPY_log'][1:len(features)].values
     simple_return = np.exp(log_return) - 1
 
     spy_return_ = simple_return + 1
     strategy_return = np.where(y_pred[0:len(features) - 1] == 1, spy_return_, 1)
 
-    # cumulative return 
+    # cumulative return
     strategy_cumulative_return = np.cumprod(strategy_return)
-    # benchmark return 
+    # benchmark return
     benchmark_cumulative_return = np.cumprod(spy_return_)
 
     # save the result
@@ -118,11 +118,11 @@ def trading_action(features, y_pred, shares=100):
     direction = y_pred
     for i in range(n_row):
         if direction[i] == 0 and initial_position == 1:
-            temp = str(date[i]) + ": Sell " + str(shares) + " Position"
+            temp = str(date[i]) + ": Sell " + str(shares) + " shares"
             table.append(temp)
             initial_position = initial_position - 1
         elif direction[i] == 1 and initial_position == 0:
-            temp = str(date[i]) + ": Buy " + str(shares) + " Position"
+            temp = str(date[i]) + ": Buy " + str(shares) + " shares"
             table.append(temp)
             initial_position = initial_position + 1
     return table
